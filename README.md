@@ -167,16 +167,10 @@ Tool support:
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on submitting new prompts, quality standards, and testing approach.
 
-## Star History
-
-If this workflow saves you time, a ⭐ helps others find it.
-
-[![Star History Chart](https://api.star-history.com/svg?repos=nurettincoban/ai-prd-workflow&type=Date)](https://star-history.com/#nurettincoban/ai-prd-workflow&Date)
-
 ## License
 
 This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
 
 ---
 
-<p align="center">Made with care for better product development with AI</p>
+<p align="center">Made with care for better product development with AI.<br>If this workflow saves you time, a ⭐ helps others find it.</p>
