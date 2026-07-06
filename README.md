@@ -2,7 +2,7 @@
 
 # 📋 AI PRD Workflow
 
-### Spec-driven development for AI coding agents
+### RFC-driven development for AI coding agents
 
 **Vague idea → verified PRD → features → rules → sequenced RFCs → reviewed, tested code**
 
@@ -12,15 +12,15 @@
 [![Claude Code](https://img.shields.io/badge/Claude_Code-slash_commands-d97757)](#quick-start)
 [![Cursor](https://img.shields.io/badge/Cursor-slash_commands-111111)](#quick-start)
 
-**[Quick Start](#quick-start)** · **[Workflow](#workflow)** · **[Commands](#available-prompts)** · **[Why specs?](#why-spec-driven-development)** · **[Examples](#examples)**
+**[Quick Start](#quick-start)** · **[Workflow](#workflow)** · **[Commands](#available-prompts)** · **[Why RFCs?](#why-rfc-driven-development)** · **[Examples](#examples)**
 
-<sub>Spec-driven since <b>March 2025</b> — before planning modes existed in any AI coding agent.</sub>
+<sub>RFC-driven since <b>March 2025</b> — before planning modes existed in any AI coding agent.</sub>
 
 </div>
 
 ---
 
-A lightweight spec-driven development workflow for AI coding tools. Ten battle-tested prompts take you from a rough idea to a verified PRD, prioritized features, project rules, and sequenced RFCs — then guide implementation, code review, and testing, one RFC at a time.
+A lightweight RFC-driven development workflow for AI coding tools. Ten battle-tested prompts take you from a rough idea to a verified PRD, prioritized features, project rules, and sequenced RFCs — then guide implementation, code review, and testing, one RFC at a time.
 
 Use it two ways:
 
@@ -107,9 +107,9 @@ When requirements change mid-development, run **Change Management** to assess im
 | `/manage-changes` | [PRD Change Management](prd-change-management-prompt.md) | Assess and integrate requirement changes mid-development |
 | `/workflow-status` | [Workflow Status](workflow-status-prompt.md) | See which artifacts exist, detect drift, get the next step |
 
-## Why spec-driven development?
+## Why RFC-driven development?
 
-AI coding agents are strong enough now to build entire features unsupervised — which makes *what you ask for* the bottleneck, not the code. Structured specs fix that:
+AI coding agents are strong enough now to build entire features unsupervised — which makes *what you ask for* the bottleneck, not the code. If you've heard of spec-driven development (GitHub Spec Kit, Amazon Kiro), this is the same philosophy — and this workflow predates both — with sequenced RFCs as the unit of work and no framework or CLI to adopt. Structured specs fix the real problems:
 
 - **Clearer instructions, fewer hallucinations** — a PRD and RFCs give the AI precise context and boundaries instead of letting it fill gaps with assumptions
 - **Scope control** — explicitly defined in/out of scope prevents the agent from implementing features nobody asked for

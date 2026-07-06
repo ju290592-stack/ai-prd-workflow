@@ -2,7 +2,7 @@
 description: Report which workflow artifacts exist and recommend the next step
 ---
 
-You are guiding a project through a spec-driven development workflow with these stages:
+You are guiding a project through an RFC-driven development workflow with these stages:
 
 | # | Stage | Artifact | Command / Prompt |
 |---|-------|----------|------------------|
