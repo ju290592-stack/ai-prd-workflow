@@ -1,175 +1,155 @@
 # AI PRD Workflow
 
 <div align="center">
-  <img src="https://img.shields.io/badge/PRD-Workflow-blue?style=for-the-badge&logo=github" alt="PRD Workflow" width="200"/>
-  <h3>AI-Powered Product Development</h3>
+  <h3>Spec-driven development for AI coding agents</h3>
+  <p>From vague idea → verified PRD → features → rules → sequenced RFCs → reviewed, tested code.</p>
 </div>
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
-![Status: Active](https://img.shields.io/badge/Status-Active-brightgreen)
+[![GitHub stars](https://img.shields.io/github/stars/nurettincoban/ai-prd-workflow?style=flat&color=orange)](https://github.com/nurettincoban/ai-prd-workflow/stargazers)
 
-A collection of reusable AI prompts to streamline your product development workflow. Copy and paste these prompts into any AI assistant (Claude, ChatGPT, Cursor, Windsurf, or any AI-powered IDE) to automate common tasks in your product development process.
+A lightweight spec-driven development workflow for AI coding tools. Ten battle-tested prompts take you from a rough idea to a verified PRD, prioritized features, project rules, and sequenced RFCs — then guide implementation, code review, and testing, one RFC at a time.
+
+Use it two ways:
+
+- **Native slash commands** in Claude Code and Cursor — `/create-prd`, `/implement-rfc 001`, `/workflow-status`, …
+- **Copy-paste prompts** into any AI assistant or IDE — ChatGPT, Gemini, Windsurf, Copilot, anything
+
+No CLI to learn, no framework to adopt, no lock-in. Just markdown.
 
 ## Quick Start
+
+### Option 1: Install as slash commands (Claude Code & Cursor)
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/nurettincoban/ai-prd-workflow/main/install.sh | bash -s -- /path/to/your/project
+```
+
+Or from a clone:
+
+```bash
+git clone https://github.com/nurettincoban/ai-prd-workflow.git
+cd ai-prd-workflow
+./install.sh /path/to/your/project            # both tools
+./install.sh /path/to/your/project --claude   # Claude Code only
+./install.sh /path/to/your/project --cursor   # Cursor only
+```
+
+Then open your project and work through the pipeline:
+
+```
+/create-prd            # guided interview → PRD.md
+/verify-prd            # gap analysis → improved PRD.md
+/extract-features      # PRD.md → FEATURES.md (MoSCoW prioritized)
+/generate-rules        # → RULES.md (project standards for the AI)
+/generate-rfcs         # → RFCs/ folder, in strict implementation order
+/implement-rfc 001     # plan → your approval → implementation
+/review-rfc 001        # review the implementation against its spec
+/test-strategy         # comprehensive test plan
+/manage-changes        # requirements changed mid-build? assess impact first
+/workflow-status       # lost? see what's done and what's next
+```
+
+> [!TIP]
+> Cloning this repo and opening it in Claude Code or Cursor gives you the commands immediately — try them against the [example project](examples/url-shortener/).
+
+### Option 2: Copy-paste into any AI assistant
 
 1. Pick a prompt from [Available Prompts](#available-prompts) below
 2. Copy its contents (or use `./copy-prompt.sh --list` to browse)
 3. Paste into any AI assistant with your project context attached
 
-New here? Check the [examples/url-shortener](examples/url-shortener/) folder for sample outputs from every step.
+## Workflow
 
-> [!TIP]
-> **Why PRD & RFC Driven Development?** This approach significantly improves AI collaboration by providing clear boundaries, reducing hallucinations, and ensuring consistent understanding between humans and AI. [Jump to full benefits](#benefits-of-prd--rfc-driven-development)
+```mermaid
+flowchart LR
+    IDEA([💡 Idea]) --> PRD[Create PRD] --> VERIFY[Verify PRD] --> FEAT[Extract Features] --> RULES[Generate Rules] --> RFCS[Generate RFCs]
+    RFCS --> IMPL[Implement RFC] --> REVIEW[Code Review] --> TEST[Test Strategy]
+    REVIEW -.->|next RFC| IMPL
+    CHANGE([Change request]) -.-> CM[Change Management] -.-> RFCS
+```
 
-## Table of Contents
-- [Benefits of PRD & RFC Driven Development](#benefits-of-prd--rfc-driven-development)
-- [Available Prompts](#available-prompts)
-- [Recommended Workflow](#recommended-workflow)
-- [Examples](#examples)
-- [How to Use](#how-to-use)
-- [Compatibility](#compatibility)
-- [Quick Tips](#quick-tips)
-- [Contributing](#contributing)
-- [License](#license)
+1. **Create PRD** — Start with a vague idea and develop it into a complete PRD through a guided interview
+2. **Verify PRD** — Identify critical gaps and improve quality before anything gets built
+3. **Extract Features** — Transform the verified PRD into organized features with priorities and acceptance criteria
+4. **Generate Rules** — Establish technical guidelines the AI must follow, wired into your agent config (CLAUDE.md, AGENTS.md, or .cursor/rules/)
+5. **Generate RFCs** — Break the project into logical, sequenced implementation units
+6. **Implement RFCs** — One RFC at a time: the AI plans first, you approve, then it codes
+7. **Code Review** — Review each implementation against its RFC, project rules, security, and performance
+8. **Test Strategy** — Generate and execute a comprehensive test plan
 
-## Benefits of PRD & RFC Driven Development
-
-Following a structured PRD & RFC driven development approach offers significant advantages, especially when collaborating with AI tools:
-
-<div align="center">
-  <table>
-    <tr>
-      <td align="center"><b>Enhanced AI<br>Collaboration</b></td>
-      <td align="center"><b>Improved<br>Development</b></td>
-      <td align="center"><b>Business<br>Benefits</b></td>
-      <td align="center"><b>AI-Specific<br>Advantages</b></td>
-    </tr>
-  </table>
-</div>
-
-### Enhanced AI Collaboration
-- **Clearer Instructions**: Well-defined PRDs and RFCs provide AI with precise context, resulting in more accurate implementations
-- **Reduced Hallucinations**: Structured documentation minimizes AI's tendency to fill in gaps with incorrect assumptions
-- **Consistent Mental Model**: Both humans and AI work from the same documented understanding
-
-### Improved Development Process
-- **Boundary Setting**: Clearly defined scope prevents AI from implementing unwanted features
-- **Incremental Verification**: Breaking work into RFCs allows validation at each step
-- **Traceability**: Each implementation traces back to specific requirements
-- **Reduced Rework**: Clear specifications minimize major revisions
-
-### Business Benefits
-- **Predictable Outcomes**: Structured approach leads to more predictable timelines and results
-- **Knowledge Preservation**: Documentation persists even as team members or AI tools change
-- **Stakeholder Alignment**: PRDs create shared understanding between business, technical teams, and AI
-- **Faster Onboarding**: New team members or AI tools quickly understand goals and constraints
-
-### AI-Specific Advantages
-- **Context Window Optimization**: Focused RFCs help AI work within context window limitations
-- **Targeted Expertise**: Different aspects can be directed to specialized AI models or prompts
-- **Quality Control**: Structured documentation provides clear criteria for AI to self-evaluate
+When requirements change mid-development, run **Change Management** to assess impact before touching the docs, then continue. Run **Workflow Status** anytime to see where you are and what's next.
 
 ## Available Prompts
 
-| Prompt | Description |
-|--------|-------------|
-| [Interactive PRD Creation](interactive-prd-creation-prompt.md) | Create a PRD through a guided step-by-step questioning process |
-| [PRD Comprehensive Verification](prd-comprehensive-verification-prompt.md) | Verify and improve your PRD by identifying gaps and quality issues |
-| [PRD to Features Extraction](prd-to-features-prompt.md) | Extract and organize features from your PRD |
-| [PRD to Rules](prd-to-rules-prompt.md) | Generate technical guidelines and standards for development |
-| [PRD to RFCs](prd-to-rfcs-prompt.md) | Break down your PRD into manageable implementation units |
-| [Implementation Template](implementation-prompt-template.md) | Template for implementing individual RFCs |
-| [Code Review](code-review-prompt.md) | Review implementation against RFC, rules, security, and performance |
-| [Testing Strategy](testing-strategy-prompt.md) | Generate comprehensive test plan from features and RFCs |
-| [PRD Change Management](prd-change-management-prompt.md) | Manage changes to your PRD during development |
+| Command | Prompt | Description |
+|---------|--------|-------------|
+| `/create-prd` | [Interactive PRD Creation](interactive-prd-creation-prompt.md) | Create a PRD through a guided step-by-step questioning process |
+| `/verify-prd` | [PRD Comprehensive Verification](prd-comprehensive-verification-prompt.md) | Verify and improve your PRD by identifying gaps and quality issues |
+| `/extract-features` | [PRD to Features](prd-to-features-prompt.md) | Extract and organize features with MoSCoW prioritization |
+| `/generate-rules` | [PRD to Rules](prd-to-rules-prompt.md) | Generate technical guidelines and standards for development |
+| `/generate-rfcs` | [PRD to RFCs](prd-to-rfcs-prompt.md) | Break down your PRD into sequenced implementation units |
+| `/implement-rfc <id>` | [Implementation Template](implementation-prompt-template.md) | Implement a single RFC — plan first, code after approval |
+| `/review-rfc <id>` | [Code Review](code-review-prompt.md) | Review an implementation against RFC, rules, security, performance |
+| `/test-strategy` | [Testing Strategy](testing-strategy-prompt.md) | Generate a comprehensive test plan from features and RFCs |
+| `/manage-changes` | [PRD Change Management](prd-change-management-prompt.md) | Assess and integrate requirement changes mid-development |
+| `/workflow-status` | [Workflow Status](workflow-status-prompt.md) | See which artifacts exist, detect drift, get the next step |
 
-## Recommended Workflow
+## Why spec-driven development?
 
-<div align="center">
-  <pre>
-  ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐
-  │  Create  │   │  Verify  │   │ Extract  │   │  Create  │   │ Generate │   │Implement │   │  Code    │   │ Testing  │
-  │   PRD    │──>│   PRD    │──>│ Features │──>│  Rules   │──>│   RFCs   │──>│   RFCs   │──>│  Review  │──>│ Strategy │
-  └──────────┘   └──────────┘   └──────────┘   └──────────┘   └──────────┘   └──────────┘   └──────────┘   └──────────┘
-  </pre>
-</div>
+AI coding agents are strong enough now to build entire features unsupervised — which makes *what you ask for* the bottleneck, not the code. Structured specs fix that:
 
-### Initial Development
-1. **Create PRD** - Start with a vague idea and develop it into a complete PRD using the Interactive Creation prompt
-2. **Verify PRD** - Identify critical gaps and improve quality using the Comprehensive Verification prompt
-3. **Extract Features** - Transform your verified PRD into organized features with priorities and acceptance criteria
-4. **Create Rules** - Establish technical guidelines and standards based on your PRD and features
-5. **Generate RFCs** - Break down the project into logical, manageable implementation units
-6. **Implement RFCs** - Use the implementation template for each RFC to guide development
-7. **Code Review** - Review each implementation against its RFC specification and project standards
-8. **Testing Strategy** - Generate and execute a comprehensive test plan for implemented features
-
-### Managing Changes
-When new requirements or changes arise during development:
-1. **Analyze Changes** - Use the Change Management prompt to assess impact and integration strategy
-2. **Update Documents** - Revise affected PRD, features, rules, and RFCs based on the analysis
-3. **Continue Implementation** - Resume development with the updated documentation
+- **Clearer instructions, fewer hallucinations** — a PRD and RFCs give the AI precise context and boundaries instead of letting it fill gaps with assumptions
+- **Scope control** — explicitly defined in/out of scope prevents the agent from implementing features nobody asked for
+- **Incremental verification** — sequenced RFCs let you validate at each step instead of reviewing a 5,000-line diff at the end
+- **Context that fits** — focused RFCs work within context limits far better than "here's my whole idea, build it"
+- **Traceability & knowledge preservation** — every implementation traces to a requirement, and the docs outlive any one chat session, team member, or model
+- **Shared mental model** — business stakeholders, developers, and AI tools all work from the same documents
 
 ## Examples
 
-The [examples/](examples/) folder contains complete sample outputs for a URL shortener project, demonstrating each step of the workflow:
+The [examples/url-shortener](examples/url-shortener/) folder contains complete sample outputs for each step of the workflow:
 
-- [PRD](examples/url-shortener/PRD.md) - Product Requirements Document
-- [Features](examples/url-shortener/FEATURES.md) - Extracted features with MoSCoW prioritization
-- [Rules](examples/url-shortener/RULES.md) - Development standards and guidelines
-- [RFCs](examples/url-shortener/RFCs/) - Implementation units (3 RFCs)
-
-Use these as a reference for what each prompt produces.
-
-## How to Use
-
-### Method 1: Manual Copy
-1. Open the desired prompt file
-2. Copy the entire contents
-3. Paste into your AI assistant
-4. Attach your PRD or relevant documents
-5. Let the AI process your request
-
-### Method 2: Using the Copy Script
-```bash
-# Make the script executable (first time only)
-chmod +x copy-prompt.sh
-
-# List all available prompts
-./copy-prompt.sh --list
-
-# Copy a prompt to clipboard
-./copy-prompt.sh interactive-prd-creation-prompt.md
-```
-
-Then paste the prompt into your AI assistant and proceed as normal.
+- [PRD](examples/url-shortener/PRD.md) — Product Requirements Document
+- [Features](examples/url-shortener/FEATURES.md) — Extracted features with MoSCoW prioritization
+- [Rules](examples/url-shortener/RULES.md) — Development standards and guidelines
+- [RFCs](examples/url-shortener/RFCs/) — Implementation units (3 RFCs)
 
 ## Compatibility
 
-These prompts work with any modern LLM, including:
-- **Claude** (Anthropic) - Claude 3.5, Claude 4.x
-- **GPT-4 / ChatGPT** (OpenAI) - GPT-4, GPT-4o, GPT-4.5
-- **Gemini** (Google) - Gemini 1.5, Gemini 2.x
-- **Local models** - Llama, Mistral, etc. (with sufficient context windows)
+The prompts are plain markdown and work with any modern LLM:
 
-They also work in AI-powered IDEs like **Cursor**, **Windsurf**, **Cline**, and **GitHub Copilot**.
+- **Claude** (Anthropic) — Claude 4 and Claude 5 families
+- **GPT** (OpenAI) — GPT-4o, GPT-5 family
+- **Gemini** (Google) — Gemini 2.5 and later
+- **Open models** — Llama, Mistral, Qwen, DeepSeek (with sufficient context)
+
+Tool support:
+
+- **Native slash commands**: Claude Code, Cursor (via `install.sh`)
+- **Copy-paste**: Windsurf, GitHub Copilot, Codex CLI, Cline, Aider, or any chat interface (manually or via `./copy-prompt.sh <prompt-file>`)
 
 ## Quick Tips
 
-- Provide complete documents when possible
-- Answer any clarifying questions the AI asks
-- Review and customize AI outputs before implementation
-- Use the prompts in sequence for best results
-- For complex projects, iterate through prompts as needed
+- Provide complete documents when possible and answer the AI's clarifying questions
+- Review and customize AI outputs before implementation — the approval gate in `/implement-rfc` exists for a reason
+- Implement RFCs strictly in order; each builds on the previous ones
+- Keep RULES.md referenced from your agent config so standards stay in context
 
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on submitting new prompts, quality standards, and testing approach.
 
+## Star History
+
+If this workflow saves you time, a ⭐ helps others find it.
+
+[![Star History Chart](https://api.star-history.com/svg?repos=nurettincoban/ai-prd-workflow&type=Date)](https://star-history.com/#nurettincoban/ai-prd-workflow&Date)
+
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
 
 ---
 

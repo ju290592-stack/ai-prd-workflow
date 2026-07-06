@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [2.1.0] - 2026-07-06
+
+### Added
+- `install.sh` — installs all prompts as native slash commands for Claude Code (`.claude/commands/`) and Cursor (`.cursor/commands/`); works via `curl | bash` without cloning
+- Committed `.claude/commands/` and `.cursor/commands/` so cloning the repo gives working slash commands immediately
+- Workflow Status prompt (`/workflow-status`) — reports which artifacts exist, detects drift, and recommends the next step
+- Agent configuration guidance in the Rules prompt (wire RULES.md into CLAUDE.md, AGENTS.md, or `.cursor/rules/`)
+- `.gitignore`
+
+### Changed
+- README repositioned around spec-driven development, with slash-command Quick Start, Mermaid workflow diagram, and updated model compatibility (Claude 4/5, GPT-5, Gemini 2.5+)
+- Prompts reference concrete filenames (PRD.md, FEATURES.md, RULES.md) instead of "attached" documents
+- CONTRIBUTING documents the prompt-files-as-source-of-truth rule and command regeneration
+
 ## [2.0.0] - 2026-03-21
 
 ### Added

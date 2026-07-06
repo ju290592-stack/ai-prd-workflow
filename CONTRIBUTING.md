@@ -30,6 +30,16 @@ New prompt files should follow these conventions:
 - **Be concrete**: "Review for security vulnerabilities" is better than "ensure the code is secure."
 - **Focus on what's unique**: Only include instructions that the AI wouldn't do by default.
 
+## Source of Truth & Generated Files
+
+The prompt `.md` files at the repo root are the single source of truth. The `.claude/commands/` and `.cursor/commands/` folders are **generated** by `install.sh` — never edit them by hand.
+
+After adding or editing a prompt:
+
+1. If it's a new prompt, add it to the `COMMANDS` mapping in `install.sh` and to the `show_prompts` list in `copy-prompt.sh`
+2. Run `./install.sh .` to regenerate the command folders
+3. Commit the regenerated files together with your prompt change
+
 ## Modifying Existing Prompts
 
 - Explain the rationale for your changes in the PR description
