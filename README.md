@@ -1,13 +1,24 @@
-# AI PRD Workflow
-
 <div align="center">
-  <h3>Spec-driven development for AI coding agents</h3>
-  <p>From vague idea → verified PRD → features → rules → sequenced RFCs → reviewed, tested code.</p>
-</div>
+
+# 📋 AI PRD Workflow
+
+### Spec-driven development for AI coding agents
+
+**Vague idea → verified PRD → features → rules → sequenced RFCs → reviewed, tested code**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![GitHub stars](https://img.shields.io/github/stars/nurettincoban/ai-prd-workflow?style=flat&color=orange)](https://github.com/nurettincoban/ai-prd-workflow/stargazers)
+[![Claude Code](https://img.shields.io/badge/Claude_Code-slash_commands-d97757)](#quick-start)
+[![Cursor](https://img.shields.io/badge/Cursor-slash_commands-111111)](#quick-start)
+
+**[Quick Start](#quick-start)** · **[Workflow](#workflow)** · **[Commands](#available-prompts)** · **[Why specs?](#why-spec-driven-development)** · **[Examples](#examples)**
+
+<sub>Spec-driven since <b>March 2025</b> — before planning modes existed in any AI coding agent.</sub>
+
+</div>
+
+---
 
 A lightweight spec-driven development workflow for AI coding tools. Ten battle-tested prompts take you from a rough idea to a verified PRD, prioritized features, project rules, and sequenced RFCs — then guide implementation, code review, and testing, one RFC at a time.
 
@@ -106,6 +117,21 @@ AI coding agents are strong enough now to build entire features unsupervised —
 - **Context that fits** — focused RFCs work within context limits far better than "here's my whole idea, build it"
 - **Traceability & knowledge preservation** — every implementation traces to a requirement, and the docs outlive any one chat session, team member, or model
 - **Shared mental model** — business stakeholders, developers, and AI tools all work from the same documents
+
+## "Doesn't my coding agent already plan?"
+
+Yes — tactically. This workflow shipped in March 2025, before planning modes existed in any AI coding agent, and it solves a different problem than they do:
+
+| Built-in plan mode | This workflow |
+|---|---|
+| Plans **one task** — "how do I implement this?" | Plans **the product** — what are we building, for whom, what's out of scope? |
+| Plan dies with the session | PRD, features, rules, and RFCs persist across sessions, models, tools, and teammates |
+| Takes your request at face value | `/create-prd` interviews you first — decisions leave your head before code exists |
+| Reviews code by "looks right" | `/review-rfc` verifies against written acceptance criteria; `/workflow-status` catches drift |
+
+The two compose rather than compete: `/generate-rfcs` decides **what** the next unit of work is, and each `/implement-rfc` hands your agent's planner a well-scoped, context-sized task — exactly what plan mode is good at.
+
+**Sweet spot:** greenfield products, multi-week builds, and anyone building something real with AI — where scope creep and forgotten decisions, not code quality, are what kill the project. For a small fix in an existing codebase, your agent alone is fine. For everything bigger, write the spec first.
 
 ## Examples
 
